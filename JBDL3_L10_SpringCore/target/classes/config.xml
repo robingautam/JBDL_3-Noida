@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+
+
+    <bean class="org.example.model.Student" name="student2">
+        <property name="id" value="1" />
+        <property name="name" value="Robin" />
+        <property name="email" value="robin@gmail.com" />
+    </bean>
+
+
+    <!-- working with collections  -->
+    <bean class="org.example.model.Student" id="student">
+        <property name="id" value="1" />
+        <property name="name" value="Robin" />
+        <property name="email" value="robin@gmail.com" />
+        <property name="subject">
+          <list>
+              <value>Hindi</value>
+              <value>English</value>
+              <value>Mathematics</value>
+          </list>
+        </property>
+
+        <property name="marks">
+            <map>
+                <entry key="hindi" value="78" />
+                <entry key="englis" value="98" />
+                <entry key="maths" value="97" />
+            </map>
+        </property>
+        <property name="subjectList">
+            <set>
+                <value>Hindi</value>
+                <value>Hindi</value>
+                <value>English</value>
+            </set>
+        </property>
+
+        <property name="address">
+            <ref bean="address" />
+        </property>
+
+    </bean>
+
+    <bean class="org.example.model.Address" id="address" >
+        <property name="street1" value="M.V" />
+        <property name="street2" value="Phase-1" />
+        <property name="pincode" value="110091" />
+    </bean>
+
+    <!-- Working with P Schema  -->
+
+    <bean class="org.example.model.Student" id="studenr2" p:id="1" p:name="Robin" p:email="robin@gmail.com">
+
+    </bean>
+
+    <!-- Working with parent   -->
+
+    <bean class="org.example.model.SportsCard" name="supercar,supercar2,supercar3" parent="baseSuperCard">
+        <property name="powerEngine" value="This is power engine" />
+        <property name="features">
+            <list merge="true">
+                <value>can Run Fast</value>
+                <value>More Engine Power</value>
+            </list>
+        </property>
+
+    </bean>
+
+    <bean class="org.example.model.SportsCard" name="baseSuperCard" abstract="true">
+        <property name="features">
+            <list>
+                <value>Some base Features</value>
+            </list>
+        </property>
+
+    </bean>
+
+
+    <bean class="org.example.model.Car" name="normalCar">
+        <property name="name" value="Simple Car" />
+    </bean>
+
+    
+    <alias name="supercar" alias="aliasSuperCarTag" />
+
+    <alias name="aliasSuperCarTag" alias="aliasSuperCarTag2" />
+
+
+
+
+
+
+
+
+
+
+</beans>

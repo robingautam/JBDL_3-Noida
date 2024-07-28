@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!-- bean definitions here -->
+
+    <util:list list-class="java.util.ArrayList" id="clist">
+        <value>Hindi</value>
+        <value>English</value>
+    </util:list>
+
+    <util:map map-class="java.util.HashMap" id="cmap">
+        <entry key="Hindi" value="23" />
+    </util:map>
+
+    <util:set set-class="java.util.HashSet" id="cset">
+        <value>Hindi</value>
+        <value>Hindi</value>
+    </util:set>
+
+
+    <bean class="org.example.utilSchema.Person" name="person">
+        <property name="list">
+            <ref bean="clist" />
+        </property>
+    </bean>
+
+    <bean class="org.example.utilSchema.Person2" name="person2">
+        <property name="list">
+            <ref bean="clist" />
+        </property>
+    </bean>
+
+</beans>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- bean definitions here -->
+
+    <bean class="org.example.idref.Vehicle" name="vehicle" init-method="init" destroy-method="destroy">
+        <property name="name" value="swift" />
+        <property name="referenceBeanId">
+            <idref bean="engine5" />
+            <!--<value>engine6</value>-->
+
+        </property>
+    </bean>
+
+
+    <bean class="org.example.idref.Engine" name="engine5">
+        <property name="name" value="Power x" />
+        <property name="power" value="480CC" />
+    </bean>
+
+</beans>
